@@ -49,6 +49,11 @@ class Nave {
         combustible = (combustible - unaCantidad).max(0)
     }
 
+    method accionAdicional() {
+        self.acelerar(5000)
+        self.cargarCombustible(30000)
+    }
+
     method esTranquila() {
         return combustible == 4000 && velocidad <= 12000
     }
@@ -77,8 +82,7 @@ class NaveBaliza inherits Nave {
     override method prepararViaje() {
         self.cambiarColorDeBaliza("verde")
         self.ponerseParaleloAlSol()
-        self.cargarCombustible(30000)
-        self.acelerar(5000)
+        self.accionAdicional()
     }
 
     override method esTranquila() {
@@ -135,8 +139,7 @@ class NaveDePasajeros inherits Nave {
         self.cargarComida(cantPasajeros * 4)
         self.cargarBebida(cantPasajeros * 6)
         self.acercarseUnPocoAlSol()
-        self.cargarCombustible(30000)
-        self.acelerar(5000)
+        self.accionAdicional()
     }
 
     override method escapar() {
@@ -198,8 +201,8 @@ class NaveDeCombate inherits Nave {
         self.ponerseVisible()
         self.replegarMisiles()
         self.emitioMensaje("Saliendo en misión")
-        self.cargarCombustible(30000)
-        self.acelerar(20000)
+        self.accionAdicional()
+        self.acelerar(15000)
     }
 
     override method esTranquila() {
