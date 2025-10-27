@@ -197,7 +197,6 @@ class NaveDeCombate inherits Nave {
     override method prepararViaje() {
         self.ponerseVisible()
         self.replegarMisiles()
-        self.acelerar(15000)
         self.emitioMensaje("Saliendo en misión")
         self.cargarCombustible(30000)
         self.acelerar(20000)
