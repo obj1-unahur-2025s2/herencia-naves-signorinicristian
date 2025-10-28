@@ -86,7 +86,7 @@ class NaveBaliza inherits Nave {
     }
 
     override method esTranquila() {
-        return super() && !(color == "rojo")
+        return super() && color != "rojo"
     }
 
     override method escapar() {
