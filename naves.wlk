@@ -13,6 +13,8 @@ class Nave {
 
     method avisar()
 
+    method tienePocaActividad()
+
     method acelerar(cuanto) {
         velocidad = (velocidad + cuanto).min(velocidadMaxima)
     }
@@ -64,7 +66,7 @@ class Nave {
     }
 
     method estaDeRelajo() {
-        return self.esTranquila()
+        return self.esTranquila() && self.tienePocaActividad()
     }
 }
 
@@ -97,12 +99,8 @@ class NaveBaliza inherits Nave {
         self.cambiarColorDeBaliza("rojo")
     }
 
-    method tienePocaActividad() {
+    override method tienePocaActividad() {
         return colorInicial == color
-    }
-
-    override method estaDeRelajo() {
-        return super() && self.tienePocaActividad()
     }
 }
 
@@ -151,7 +149,7 @@ class NaveDePasajeros inherits Nave {
         self.cargarBebida(cantPasajeros * 2)
     }
 
-    method tienePocaActividad() {
+    override method tienePocaActividad() {
         return comidaServida <= 50
     }
 }
@@ -216,6 +214,10 @@ class NaveDeCombate inherits Nave {
 
     override method avisar() {
         self.emitirMensaje("Amenaza recibida")
+    }
+
+    override method tienePocaActividad() {
+        return mensajesEmitidos.size() <= 2
     }
 }
 
