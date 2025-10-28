@@ -71,14 +71,15 @@ class Nave {
 }
 
 class NaveBaliza inherits Nave {
-    const colorInicial
+    var color
 
-    var color = colorInicial
+    var cambioDeColor = false
 
     method color() = color
 
     method cambiarColorDeBaliza(colorNuevo) {
         color = colorNuevo
+        cambioDeColor = true
     }
 
     override method prepararViaje() {
@@ -100,7 +101,7 @@ class NaveBaliza inherits Nave {
     }
 
     override method tienePocaActividad() {
-        return colorInicial == color
+        return !cambioDeColor
     }
 }
 
